@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        nav {
+            margin-bottom: 20px;
+        }
+
+        nav a {
+            margin-right: 20px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #ddd;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+    <title>Login - Hotel Management System</title>
+</head>
+
+<body>
+    <h1>Login</h1>
+    <form action="/adminlogin" method="post" onsubmit="return validateForm()">
+        <input type="text" name="username" placeholder="Username" pattern="[a-zA-Z0-9]+" title="Only alphanumeric characters are allowed" required>
+        <input type="password" name="password" placeholder="Password" minlength="6" required>
+        <button type="submit">Login</button>
+    </form>
+
+    <script>
+        function validateForm() {
+            var usernamePattern = /^[a-zA-Z0-9]+$/;
+
+            var usernameInput = document.getElementsByName("username")[0];
+
+            if (!usernamePattern.test(usernameInput.value)) {
+                alert("Only alphanumeric characters are allowed in the username.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+
+</html>

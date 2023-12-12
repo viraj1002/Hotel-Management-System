@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Login - Hotel Management System</title>
+</head>
+
+<body>
+    <h1>Login</h1>
+    <form action="/login" method="post" onsubmit="return validateForm()">
+        <input type="text" name="username" placeholder="Username" pattern="[a-zA-Z0-9]+" title="Only alphanumeric characters are allowed" required>
+        <input type="password" name="password" placeholder="Password" minlength="6" required>
+        <button type="submit">Login</button>
+    </form>
+
+    <script>
+        function validateForm() {
+            var usernamePattern = /^[a-zA-Z0-9]+$/;
+
+            var usernameInput = document.getElementsByName("username")[0];
+
+            if (!usernamePattern.test(usernameInput.value)) {
+                alert("Only alphanumeric characters are allowed in the username.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Signup - Hotel Management System</title>
+</head>
+
+<body>
+    <h1>Signup</h1>
+    <form action="/signup" method="post" onsubmit="return validateForm()">
+        <input type="text" name="name" placeholder="Full Name" required>
+        <input type="tel" name="mobile" placeholder="Mobile Number" pattern="[0-9]{10}" title="Enter a valid 10-digit mobile number" required>
+        <input type="number" name="age" placeholder="Age" min="18" required>
+        <input type="text" name="username" placeholder="Username" pattern="[a-zA-Z0-9]+" title="Only alphanumeric characters are allowed" required>
+        <input type="password" name="password" placeholder="Password" minlength="6" required>
+        <button type="submit">Signup</button>
+    </form>
+
+    <script>
+        function validateForm() {
+            var mobilePattern = /^[0-9]{10}$/;
+            var usernamePattern = /^[a-zA-Z0-9]+$/;
+
+            var mobileInput = document.getElementsByName("mobile")[0];
+            var usernameInput = document.getElementsByName("username")[0];
+
+            if (!mobilePattern.test(mobileInput.value)) {
+                alert("Please enter a valid 10-digit mobile number.");
+                return false;
+            }
+
+            if (!usernamePattern.test(usernameInput.value)) {
+                alert("Only alphanumeric characters are allowed in the username.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+
+</html>

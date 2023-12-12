@@ -1,0 +1,22 @@
+<%- include('layout') -%>
+
+<% title = 'Booking' %>
+
+<div class="booking-container">
+    <h1>Room Booking</h1>
+    
+    <form action="/booking" method="post">
+        <input type="text" name="customerName" placeholder="Your Name" required>
+        
+        <select name="roomType" required>
+            <option value="single">Single Room</option>
+            <option value="double">Double Room</option>
+            <!-- Add more room types as needed -->
+        </select>
+        
+        <input type="date" name="checkInDate" required>
+        <input type="date" name="checkOutDate" required>
+        
+        <button type="submit">Book Now</button>
+    </form>
+</div>

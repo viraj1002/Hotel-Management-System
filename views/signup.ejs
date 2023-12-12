@@ -1,0 +1,15 @@
+<%- include('layout') -%>
+
+<% title = 'Sign Up' %>
+
+<div class="signup-container">
+    <h1>Sign Up</h1>
+    <form action="/signup" method="post" onsubmit="return validateForm()">
+        <input type="text" name="name" placeholder="Full Name" required>
+        <input type="tel" name="mobile" placeholder="Mobile Number" pattern="[0-9]{10}" title="Enter a valid 10-digit mobile number" required>
+        <input type="number" name="age" placeholder="Age" min="18" required>
+        <input type="text" name="username" placeholder="Username" pattern="[a-zA-Z0-9]+" title="Only alphanumeric characters are allowed" required>
+        <input type="password" name="password" placeholder="Password" minlength="6" required>
+        <button type="submit">Signup</button>
+    </form>
+</div>

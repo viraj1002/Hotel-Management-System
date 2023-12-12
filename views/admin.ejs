@@ -1,0 +1,86 @@
+<% title = 'Admin' %>
+
+<%- include('layout') -%>
+
+<h1>Admin Panel</h1>
+
+<!-- Rest of your admin panel content -->
+
+
+<!-- Display Users -->
+<h2>Users</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Mobile</th>
+            <th>Age</th>
+            <th>Username</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Render users dynamically here -->
+        <% users.forEach(user => { %>
+            <tr>
+                <td><%= user.name %></td>
+                <td><%= user.mobile %></td>
+                <td><%= user.age %></td>
+                <td><%= user.username %></td>
+                <td>
+                    <!-- Update and delete user form actions -->
+                    <form action="/admin/updateUser" method="post">
+                        <input type="hidden" name="userId" value="<%= user._id %>">
+                        <button type="submit">Update</button>
+                    </form>
+                    <form action="/admin/deleteUser" method="post">
+                        <input type="hidden" name="userId" value="<%= user._id %>">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        <% }); %>
+    </tbody>
+</table>
+
+<!-- Display Bookings -->
+<h2>Bookings</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Customer Name</th>
+            <th>Room Type</th>
+            <th>Check-in Date</th>
+            <th>Check-out Date</th>
+            <th>Total Adults</th>
+            <th>Total Children</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Render bookings dynamically here -->
+        <% bookings.forEach(booking => { %>
+            <tr>
+                <td><%= booking.customerName %></td>
+                <td><%= booking.roomType %></td>
+                <td><%= booking.checkInDate.toDateString() %></td>
+                <td><%= booking.checkOutDate.toDateString() %></td>
+                <td><%= booking.totalAdults %></td>
+                <td><%= booking.totalChildren %></td>
+                <td><%= booking.price %></td>
+                <td>
+                    <!-- Update and delete booking form actions -->
+                    <form action="/admin/update" method="post">
+                        <input type="hidden" name="bookingId" value="<%= booking._id %>">
+                        <button type="submit">Update</button>
+                    </form>
+                    <form action="/admin/delete" method="post">
+                        <input type="hidden" name="bookingId" value="<%= booking._id %>">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        <% }); %>
+    </tbody>
+</table>
