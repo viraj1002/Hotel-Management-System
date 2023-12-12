@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Booking - Hotel Management System</title>
+    <style>
+        .success-message {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Book a Room</h1>
+    <form id="bookingForm" action="/booking" method="post">
+        <input type="text" name="customerName" placeholder="Your Name" required>
+        <input type="number" name="customerAge" placeholder="Your Age" required>
+        <select name="roomType" required>
+            <option value="single">Single Room</option>
+            <option value="deluxe">Deluxe Room</option>
+            <!-- Add more room types as needed -->
+        </select>
+        <input type="date" name="checkInDate" id="checkInDate" required>
+        <input type="date" name="checkOutDate" id="checkOutDate" required>
+        <input type="text" name="price" id="price" placeholder="Price" readonly>
+        <button type="submit">Book Now</button>
+    </form>
+
+    <!-- Display success message using JavaScript -->
+    <div id="successMessage" class="success-message" style="display: none;">
+        Room booked successfully!
+    </div>
+
+    <script>
+        document.getElementById("bookingForm").addEventListener("submit", function (event) {
+            // Prevent the form from submitting and reloading the page
+            event.preventDefault();
+
+            // Display the success message
+            document.getElementById("successMessage").style.display = "block";
+        });
+
+        // Calculate price based on room type and dates
+        document.getElementById("bookingForm").addEventListener("change", function () {
+            var roomType = document.getElementById("roomType").value;
+            var checkInDate = new Date(document.getElementById("checkInDate").value);
+            var checkOutDate = new Date(document.getElementById("checkOutDate").value);
+
+            // Calculate price based on room type and dates (example logic)
+            var price = calculatePrice(roomType, checkInDate, checkOutDate);
+
+            // Update the price field
+            document.getElementById("price").value = price;
+        });
+
+        // Example logic for calculating price (you can customize this based on your needs)
+        function calculatePrice(roomType, checkInDate, checkOutDate) {
+            // Replace this with your actual price calculation logic
+            var pricePerNight = 100; // Example price per night
+            var numberOfNights = Math.ceil((checkOutDate - checkInDate) / (1000 * 60 * 60 * 24));
+            var totalPrice = pricePerNight * numberOfNights;
+
+            return totalPrice;
+        }
+    </script>
+</body>
+
+</html>
